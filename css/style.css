@@ -9670,8 +9670,8 @@ h6,
   bottom: 0;
   left: 0;
   opacity: 0;
-  background: rgba(253, 172, 83, 0.7);
-  border: 15px solid #ffffff;
+  background: rgba(0, 0, 0, 0.5);
+  /* border: 15px solid #ffffff; */
   transition: .5s;
 }
 
@@ -9714,4 +9714,25 @@ div input:disabled{
 }
 .leftcheckoutside{
  width: 430px;
+}
+.picturebtn{
+  display: none;
+}
+@media (max-width:786px) {
+  .aligner{
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+    height: 230px;
+  }
+  .foroil{
+    flex-direction: column-reverse;
+    gap: 8px;
+  }
+  .buynowbtn{
+    display: none;
+  }
+  .picturebtn{
+    display: block;
+  }
 }
