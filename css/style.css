@@ -52,7 +52,9 @@ html {
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
-
+.checkoutsection{
+  flex-wrap: wrap-reverse;
+}
 body {
   margin: 0;
   font-family: "Raleway", sans-serif;
