@@ -1,0 +1,131 @@
+
+
+
+                    <!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Aura Presence - Coming Soon</title>
+                        <style>
+                            body {
+                                margin: 0;
+                                padding: 0;
+                                font-family: Arial, sans-serif;
+                                background-color: #f5f5f5;
+                                text-align: center;
+                            }
+                            .header {
+                                background-color: #936319;
+                                color: white;
+                                padding: 20px;
+                                font-size: 28px;
+                                font-weight: bold;
+                                position: relative;
+                            }
+                            .home {
+                                position: center;
+                                margin-top: 20px;
+                                transform: translateY(-50%);
+                                font-size: 15px;
+                            }
+                            .home a {
+                                color: white;
+                                text-decoration: none;
+                            }
+                            .container {
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                align-items: center;
+                                height: 80vh;
+                            }
+                            .coming-soon {
+                                font-size: 36px;
+                                color: #333;
+                                margin-bottom: 20px;
+                            }
+                            .description {
+                                font-size: 20px;
+                                color: #555;
+                                max-width: 600px;
+                                margin-bottom: 20px;
+                            }
+                            .countdown {
+                                font-size: 24px;
+                                color: #fff;
+                                display: flex;
+                                gap: 10px;
+                            }
+                            .countdown span {
+                                background: #936319;
+                                padding: 15px;
+                                border-radius: 50%;
+                                border: 3px solid #fff;
+                                display: inline-block;
+                                min-width: 60px;
+                                text-align: center;
+                                font-weight: bold;
+                                animation: pulse 1.5s infinite alternate;
+                            }
+                            @keyframes pulse {
+                                0% {
+                                    transform: scale(1);
+                                    box-shadow: 0 0 10px rgba(147, 99, 25, 0.5);
+                                }
+                                100% {
+                                    transform: scale(1.1);
+                                    box-shadow: 0 0 20px rgba(147, 99, 25, 0.9);
+                                }
+                            }
+                            .footer {
+                                position: absolute;
+                                bottom: 20px;
+                                width: 100%;
+                                color: #f3eaea;
+                                font-size: 14px;
+                                background: #222121;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="header">
+                            Aura Presence
+                            <div class="home"><a href="index.html">Home</a></div>
+                        </div>
+                        <div class="container">
+                            <div class="coming-soon">Our Exclusive Perfume is Launching Soon!</div>
+                            <div class="description">Experience the essence of luxury and elegance with our upcoming fragrance collection. Stay tuned for something extraordinary!</div>
+                            <div class="countdown" id="countdown"></div>
+                        </div>
+                        <div class="footer">&copy; 2025 Aura Presence. All rights reserved.</div>
+                    
+                        <script>
+                            function countdownTimer() {
+                                const launchDate = new Date("March 1, 2025 00:00:00").getTime();
+                                const x = setInterval(function() {
+                                    const now = new Date().getTime();
+                                    const distance = launchDate - now;
+                                    
+                                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                                    
+                                    document.getElementById("countdown").innerHTML = `
+                                        <span>${days}d</span> 
+                                        <span>${hours}h</span> 
+                                        <span>${minutes}m</span> 
+                                        <span>${seconds}s</span>`;
+                                    
+                                    if (distance < 0) {
+                                        clearInterval(x);
+                                        document.getElementById("countdown").innerHTML = "We're Live!";
+                                    }
+                                }, 1000);
+                            }
+                            countdownTimer();
+                        </script>
+                    </body>
+                    </html>
+                    
