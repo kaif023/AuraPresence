@@ -1,266 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <title>Aura Presence</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- Favicon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="img/favicon.ico" rel="icon">
-
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Presence - Checkout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+        }
+        :root {
+            --brand-gold: #D4AF37;
+            --light-bg: #ffffff;
+            --text-primary: #212529;
+            --border-color: #dee2e6;
+        }
+        .brand-gold-bg { background-color: var(--brand-gold); }
+        .brand-gold-text { color: var(--brand-gold); }
+        .brand-gold-border { border-color: var(--brand-gold); }
+        .hidden { display: none; }
+        .form-input {
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--brand-gold);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.3);
+        }
+        .form-select {
+             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23D4AF37' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+             background-position: right 0.5rem center;
+             background-repeat: no-repeat;
+             background-size: 1.5em 1.5em;
+             padding-right: 2.5rem;
+             -webkit-appearance: none;
+             -moz-appearance: none;
+             appearance: none;
+        }
+    </style>
 </head>
+<body class="text-gray-800">
 
-<body>
-    <!-- Navbar Start -->
-    <div class="container-fluid nav-bar p-0">
-        <div class="container-lg p-0">
-            <nav class="navbar navbar-expand-lg bg-secondary navbar-dark">
-                <a href="index.html" class="navbar-brand">
-                    <img src="./images/logoweb.png" width="60px" height="50px" /> </a>
-                </a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                    <div class="navbar-nav ml-auto py-0">
-                        <a href="index.html" class="nav-item nav-link">Home</a>
-                        <a href="about.html" class="nav-item nav-link active">About</a>
-                        <a href="#" class="nav-item nav-link">Services</a>
-                        <!-- <a href="#" class="nav-item nav-link">Privacy Policy</a> -->
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+    <!-- Custom Alert Modal -->
+    <div id="customAlert" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg shadow-xl p-6 w-11/12 md:w-1/3">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">Incomplete Information</h3>
+            <p id="customAlertMessage" class="text-gray-700"></p>
+            <div class="mt-6 text-right">
+                <button onclick="closeAlert()" class="brand-gold-bg text-white px-4 py-2 rounded-lg hover:opacity-90">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div id="mainContainer">
+
+        <!-- ======================= CHECKOUT VIEW ======================= -->
+        <div id="checkoutView">
+            <div class="max-w-lg mx-auto p-4 md:p-6">
+                <!-- Product Info -->
+                <div class="flex items-center space-x-4 mb-6">
+                    <img src="https://placehold.co/80x80/D4AF37/ffffff?text=Aura" alt="Product Image" class="w-20 h-20 rounded-lg border-2 brand-gold-border">
+                    <div>
+                        <h1 class="text-lg font-semibold text-black">Transform Your Hair with Our Premium Hair Oil</h1>
+                        <p class="brand-gold-text text-xl font-bold">Rs 1,500.00</p>
                     </div>
                 </div>
-            </nav>
+
+                <!-- Checkout Form -->
+                <form id="checkoutForm" class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="mb-6">
+                        <h2 class="text-xl font-bold mb-3 brand-gold-text">Contact</h2>
+                        <input type="text" id="email" placeholder="Email or Phone Number" class="w-full p-3 rounded-lg form-input" required>
+                    </div>
+                    <div class="mb-6">
+                        <h2 class="text-xl font-bold mb-3 brand-gold-text">Delivery</h2>
+                        <div class="space-y-4">
+                            <select id="region" class="w-full p-3 rounded-lg form-input form-select" required>
+                                <option value="Pakistan">Pakistan</option>
+                            </select>
+                            <div class="flex space-x-4">
+                                <input type="text" id="firstName" placeholder="First Name (Optional)" class="w-1/2 p-3 rounded-lg form-input">
+                                <input type="text" id="lastName" placeholder="Last Name" class="w-1/2 p-3 rounded-lg form-input" required>
+                            </div>
+                            <input type="text" id="address" placeholder="Address" class="w-full p-3 rounded-lg form-input" required>
+                            <input type="text" id="apartment" placeholder="Apartment, Suite, etc." class="w-full p-3 rounded-lg form-input">
+                            <div class="flex space-x-4">
+                                <input type="text" id="city" placeholder="City" class="w-1/2 p-3 rounded-lg form-input" required>
+                                <input type="text" id="postalCode" placeholder="Postal code" class="w-1/2 p-3 rounded-lg form-input" required>
+                            </div>
+                            <input type="tel" id="phone" placeholder="Phone Number" class="w-full p-3 rounded-lg form-input" required>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <h2 class="text-xl font-bold mb-3 brand-gold-text">Shipping</h2>
+                        <div class="bg-gray-100 p-3 rounded-lg flex justify-between items-center">
+                            <span>Free Shipping</span>
+                            <i class="fas fa-check-circle text-green-500"></i>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <h2 class="text-xl font-bold mb-3 brand-gold-text">Payment method</h2>
+                        <div class="bg-gray-100 p-3 rounded-lg flex justify-between items-center">
+                            <span>Cash on Delivery</span>
+                            <i class="fas fa-money-bill-wave text-green-500"></i>
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full brand-gold-bg text-white font-bold py-4 px-4 rounded-lg text-lg hover:opacity-90 transition duration-300">
+                        Complete Order
+                    </button>
+                </form>
+            </div>
         </div>
-    </div>
-    <!-- Navbar End -->
 
-
-    <!-- Page Header Start -->
-    <div
-        class="container-fluid page-header d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5 mb-5">
-        <h1 class="display-4 text-white mb-3 mt-0 mt-lg-5">CheckOut</h1>
-        <div class="d-inline-flex text-white">
-            <p class="m-0"><a class="text-white" href="">Home</a></p>
-            <p class="m-0 px-2">/</p>
-            <p class="m-0">CheckOut</p>
-        </div>
-    </div>
-    <!-- Page Header Start -->
-    <!-- CheckOut section start -->
-
-    <div class="container d-flex gap-5 mt-5 checkoutsection">
-        <div class="rightcheckoutside">
-            <h3 class="titlecheck font-weight-bold text-primary">Contact </h3>
-            <input class="input-check" placeholder="Email or Phone Number " />
-            <h3 class="titlecheck font-weight-bold text-primary mt-4">Delivery </h3>
-            <div class="form-floating">
-                <select class="form-select input-check" id="floatingSelect" aria-label="Floating label select example">
-                    <option selected>Pakistan</option>
-
-                </select>
-                <label for="floatingSelect">Region</label>
-            </div>
-            <div class="d-flex gap-2 mt-3">
-                <div class="form-floating mb-3 w-50">
-                    <input type="email" class="form-control input-check" id="floatingInput"
-                        placeholder="name@example.com">
-                    <label for="floatingInput">First Name (Optional)</label>
-                </div>
-                <div class="form-floating mb-3 w-50">
-                    <input type="email" class="form-control input-check" id="floatingInput"
-                        placeholder="name@example.com">
-                    <label for="floatingInput">Last Name</label>
-                </div>
-            </div>
-            <div class="form-floating mb-3 ">
-                <input type="email" class="form-control input-check" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Address</label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="email" class="form-control input-check" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Apartment,Suit,etc</label>
-            </div>
-            <div class="d-flex gap-2 mt-3">
-                <div class="form-floating mb-3 w-50">
-                    <input type="email" class="form-control input-check" id="floatingInput"
-                        placeholder="name@example.com">
-                    <label for="floatingInput">City</label>
-                </div>
-                <div class="form-floating mb-3 w-50">
-                    <input type="email" class="form-control input-check" id="floatingInput"
-                        placeholder="name@example.com">
-                    <label for="floatingInput">Postal code</label>
-                </div>
-            </div>
-            <div class="form-floating mb-3 ">
-                <input type="email" class="form-control input-check" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Phone Number</label>
-            </div>
-            <h3 class="titlecheck font-weight-bold text-primary mt-4">Shiping  </h3>
-
-
-            <div class="d-flex align-items-center input-check justify-content-between divn">
-                <input style="width:90%;border: none;" placeholder="Free Shipping" disabled />
-                <b><i class="fa-regular fa-circle-check" style="color: green; font-size: 16px;"></i></b>
-            </div>
-            <h3 class="titlecheck font-weight-bold text-primary mt-4">Payment method </h3>
-
-
-            <div class="d-flex align-items-center input-check justify-content-between divn">
-                <input style="width:90%;border: none;" placeholder="Cash on Delivery" disabled />
-            
-            </div>
-            <button class="btn btn-primary p-3 font-weight-semi-bold text-white mt-3 rounded w-100">
-                Complete Order
-            </button>
-        </div>
-        <div class="leftcheckoutside mt-3">
-            
-            <div class="d-flex gap-3">
-                <img src="./images/product.png" class="rounded" width='100px' height="100px"/>
-                <div class="nametitle">
-                  <b>
-                    Transform Your Hair with Our Premium Hair Oil
-                  </b> 
-                </div>
+        <!-- ======================= THANK YOU VIEW ======================= -->
+        <div id="thankYouView" class="hidden">
+            <div class="max-w-lg mx-auto p-8 text-center bg-white rounded-xl shadow-2xl mt-10">
+                <i class="fas fa-check-circle text-green-500 text-6xl mb-4"></i>
+                <h1 class="text-3xl font-bold brand-gold-text mb-2">Thank You!</h1>
+                <p class="text-lg text-gray-700 mb-6">Your order has been placed successfully.</p>
+                <p class="text-gray-500">We have sent a confirmation to your email. You will be notified once your order is shipped.</p>
+                <button onclick="showCheckoutView()" class="mt-8 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-6 rounded-lg transition duration-300">
+                    Place Another Order
+                </button>
             </div>
         </div>
     </div>
 
-
-
-    <!-- Footer Start -->
-    <div class="container-fluid bg-secondary text-white mt-5 pt-5 px-sm-3 px-md-5">
-        <div class="row pt-5">
-            <div class="col-lg-3 col-md-6 mb-5">
-                <a href="index.html" class="navbar-brand">
-                    <h3 class="m-0 mt-n2 text-white"><span class="text-primary">Aura</span>Presence</h3>
-                </a>
-                <p>Aura Presence: Your go-to online brand in Pakistan for anti-hair fall hair oil, luxury perfumes, and stylish watches</p>
-                <div class="d-flex justify-content-start mt-4">
-                    <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
-                        style="width: 38px; height: 38px;" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
-                        style="width: 38px; height: 38px;" href="https://web.facebook.com/AuraPresence"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
-                        style="width: 38px; height: 38px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
-                        style="width: 38px; height: 38px;" href="https://www.instagram.com/aurapresence21/"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="font-weight-bold text-primary mb-4">Quick Links</h5>
-                <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white mb-2" href="index.html"><i class="fa fa-angle-right text-primary mr-2"></i>Home</a>
-                    <a class="text-white mb-2" href="aboutus.html"><i class="fa fa-angle-right text-primary mr-2"></i>About Us</a>
-                    <a class="text-white mb-2" href="services.html"><i class="fa fa-angle-right text-primary mr-2"></i>Services</a>
-                    <a class="text-white mb-2" href="privacypolicy.html"><i class="fa fa-angle-right text-primary mr-2"></i> Privacy Policy</a>
-                    <a class="text-white" href="contact.html"><i class="fa fa-angle-right text-primary mr-2"></i>Contact Us</a>
-                </div>
-            </div>
-            <!-- <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="font-weight-bold text-primary mb-4">Popular Links</h5>
-                <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right text-primary mr-2"></i>Home</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right text-primary mr-2"></i>About Us</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right text-primary mr-2"></i>Services</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right text-primary mr-2"></i>Pricing</a>
-                    <a class="text-white" href="#"><i class="fa fa-angle-right text-primary mr-2"></i>Contact Us</a>
-                </div>
-            </div> -->
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="font-weight-bold text-primary mb-4">Get In Touch</h5>
-                <p>Aura Presence: Redefining style and care with premium hair oil, perfumes, and watches. Explore at aurapresence.store</p>
-                <p><i class="fa fa-map-marker-alt text-primary mr-2"></i>Lodhran, Punjab Pakistan</p>
-                <p><i class="fa fa-phone-alt text-primary mr-2"></i>+92 3160609098</p>
-                <p><i class="fa fa-envelope text-primary mr-2"></i>support@aurapresence.store</p>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid py-4 px-sm-3 px-md-5">
-        <p class="m-0 text-center">
-            &copy; <a class="font-weight-semi-bold" href="#">Aura Presence</a>. All Rights Reserved. Designed by
-            <a class="font-weight-semi-bold">Muhammad Saad Afzal</a>
-        </p>
-    </div>
-    <!-- Footer End -->
-
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-up"></i></a>
-
-
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <!-- Contact Javascript File -->
-    <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script>
-
-    <!-- Template Javascript -->
-    <!-- <script src="js/main.js"></script> -->
     <script>
-        $(document).ready(function () {
-            $('.owl-carousel.team-carousel').owlCarousel({
-                items: 1,
-                loop: true,
-                nav: false, // No buttons
-                dots: true, // Keep dots
-                autoplay: true,
-                autoplayTimeout: 3000,
-                autoplayHoverPause: true
+        const customAlert = document.getElementById('customAlert');
+        const customAlertMessage = document.getElementById('customAlertMessage');
+        const checkoutView = document.getElementById('checkoutView');
+        const thankYouView = document.getElementById('thankYouView');
+        const checkoutForm = document.getElementById('checkoutForm');
+
+        function showAlert(message) {
+            customAlertMessage.textContent = message;
+            customAlert.classList.remove('hidden');
+        }
+
+        function closeAlert() {
+            customAlert.classList.add('hidden');
+        }
+
+        function showCheckoutView() {
+            thankYouView.classList.add('hidden');
+            checkoutView.classList.remove('hidden');
+            checkoutForm.reset();
+        }
+
+        checkoutForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            let isValid = true;
+            const requiredFields = ['email', 'lastName', 'address', 'city', 'postalCode', 'phone'];
+            requiredFields.forEach(fieldId => {
+                const input = document.getElementById(fieldId);
+                if (!input.value.trim()) {
+                    input.style.borderColor = 'red';
+                    isValid = false;
+                } else {
+                    input.style.borderColor = 'var(--border-color)';
+                }
             });
 
-        });
-        document.addEventListener("DOMContentLoaded", function () {
-            const basePrice = 899; // Price per unit
-            const quantityInput = document.getElementById("quantity");
-            const totalPriceElement = document.getElementById("total-price");
-
-            // Function to update the total price
-            function updateTotalPrice() {
-                const quantity = parseInt(quantityInput.value, 10);
-                const totalPrice = basePrice * (quantity > 0 ? quantity : 1); // Default to 1 if input is invalid
-                totalPriceElement.textContent = totalPrice;
+            if (!isValid) {
+                showAlert('Please fill all the required fields.');
+                return;
             }
-
-            // Event listener for quantity change
-            quantityInput.addEventListener("input", updateTotalPrice);
-
-            // Initialize total price on page load
-            updateTotalPrice();
+            
+            checkoutView.classList.add('hidden');
+            thankYouView.classList.remove('hidden');
         });
-
-
-
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
 </body>
-
 </html>
